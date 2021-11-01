@@ -32,7 +32,7 @@ async function subscribe(req, res) {
 
     // get existing user
     const userId = decodedToken.id;
-    const user = await User.findByPk(userId);
+    const user = await User.findByPk(userId.toString());
     if (!user) {
         res.status(401);
         res.send('Unknown user');

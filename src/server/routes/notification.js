@@ -16,7 +16,7 @@ async function notification(req, res) {
     console.log(`Receiving notification: ${JSON.stringify(req.body, null, 2)}`);
     // Identify which user or subscription is relevant, normally by 3rd party webhook id or user id. 
     const subscriptionId = req.query.subscriptionId;
-    const subscription = await Subscription.findByPk(subscriptionId);
+    const subscription = await Subscription.findByPk(subscriptionId.toString());
 
     if (req.body.issue) {
       // Step.1: Extract info from 3rd party notification POST body 
@@ -85,14 +85,14 @@ async function interactiveMessages(req, res) {
     return;
   }
   const subscriptionId = body.data.subscriptionId;
-  const subscription = await Subscription.findByPk(subscriptionId);
+  const subscription = await Subscription.findByPk(subscriptionId.toString());
   if (!subscription) {
     res.status(404);
     res.send('Not found');
     return;
   }
   const oauth = getOAuthApp();
-  let user = await User.findOne({ where: { rcUserId: body.user.id } });
+  let user = await User.findOne({ where: { rcUserId: body.user.id.toString() } });
   const action = body.data.action;
   let octokit;
   if (action === 'authorize') {
@@ -130,7 +130,7 @@ async function interactiveMessages(req, res) {
     else {
       // Step.1: Get user info with 3rd party API call
       const { data: userInfo } = await octokit.users.getAuthenticated(); // [REPLACE] userInfoResponse with actual user info API call to 3rd party server
-      user = await User.findByPk(userInfo.id);  // [REPLACE] this with actual user id
+      user = await User.findByPk(userInfo.id.toString());  // [REPLACE] this with actual user id
       // Case: when target user exists only as known by 3rd party platform
       if (user) {
         user.accessToken = accessToken;

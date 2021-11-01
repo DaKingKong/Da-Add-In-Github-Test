@@ -30,7 +30,7 @@ async function getUserInfo(req, res) {
         return;
     }
     const userId = decodedToken.id;
-    const user = await User.findByPk(userId);
+    const user = await User.findByPk(userId.toString());
     if (!user || !user.accessToken) {
         res.status(401);
         res.send('Token invalid.');
@@ -68,7 +68,7 @@ async function generateToken(req, res) {
         const userName = userInfo.login;
 
         // Find if it's existing user in our database
-        const user = await User.findByPk(userId);
+        const user = await User.findByPk(userId.toString());
         // Step2: If user doesn't exist, we want to create a new one
         if (!user) {
             await User.create({
@@ -110,7 +110,7 @@ async function revokeToken(req, res) {
     }
     const userId = decodedToken.id;
     try {
-        const user = await User.findByPk(userId);
+        const user = await User.findByPk(userId.toString());
         if (user) {
             const accessToken = user.accessToken;
             // Clear database info
