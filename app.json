@@ -2,5 +2,16 @@
     "name": "Da Add-In Github Test",
     "description" : "A test app for RingCentral Add-In Notification App",
     "repository": "https://github.com/DaKingKong/Da-Add-In-Github-Test",
-    "keywords": ["node", "express", "ringcentral add-in"]
+    "keywords": ["node", "express", "ringcentral add-in"],
+    "addons": [
+      {
+        "plan": "heroku-postgresql"
+      }
+    ],
+    "env": {
+      "SERVER_SECRET_KEY": {
+        "description": "A secret key for verifying the integrity of signed cookies.",
+        "generator": "secret"
+      }
+    }
   }
