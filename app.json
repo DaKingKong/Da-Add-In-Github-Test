@@ -1,0 +1,6 @@
+{
+    "name": "Da Add-In Github Test",
+    "description" : "A test app for RingCentral Add-In Notification App",
+    "repository": "https://github.com/DaKingKong/Da-Add-In-Github-Test",
+    "keywords": ["node", "express", "ringcentral add-in"]
+  }
