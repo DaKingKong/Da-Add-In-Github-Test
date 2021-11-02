@@ -133,7 +133,7 @@ async function revokeToken(req, res) {
 
                 await octokit.repos.deleteWebhook({
                     owner: user.name,
-                    repo: process.env.GITHUB_REPO_NAME,
+                    repo: 'ringcentral-github-webhook-test',
                     hook_id: thirdPartySubscriptionId
                 });
 

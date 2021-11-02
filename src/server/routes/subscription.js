@@ -53,7 +53,7 @@ async function subscribe(req, res) {
           });
         const webhookResponse = await octokit.repos.createWebhook({
             owner: user.name,
-            repo: process.env.GITHUB_REPO_NAME,
+            repo: 'ringcentral-github-webhook-test',
             events: ['issues'],
             config: {
               url: notificationCallbackUrl,

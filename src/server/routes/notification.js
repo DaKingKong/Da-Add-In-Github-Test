@@ -185,7 +185,7 @@ async function interactiveMessages(req, res) {
       });
       await octokit.issues.addLabels({
         owner: user.name,
-        repo: process.env.GITHUB_REPO_NAME,
+        repo: 'ringcentral-github-webhook-test',
         issue_number: body.data.issueNumber,
         labels: [body.data.label]
       });
