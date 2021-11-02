@@ -4,6 +4,7 @@ const subscriptionRoute = require('./routes/subscription');
 const notificationRoute = require('./routes/notification');
 const viewRoute = require('./routes/view');
 const constants = require('./lib/constants');
+const express = require('express');
 
 // extends or override express app as you need
 exports.appExtend = (app) => {
