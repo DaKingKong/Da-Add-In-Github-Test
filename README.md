@@ -2,6 +2,8 @@
 
 This template aims to help you quickly set up your app with 3rd party webhook integration.
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 # Prerequisites
 
 - Download and install RingCentral App and login: https://www.ringcentral.com/apps/rc-app
