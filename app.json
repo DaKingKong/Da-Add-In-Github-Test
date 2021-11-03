@@ -17,10 +17,6 @@
         "description": "Your heroku app URI.",
         "value": "https://your_app_name.herokuapp.com"
       },
-      "DATABASE_CONNECTION_URI": {
-        "description": "Database connection uri",
-        "value": "db://"
-      },
       "ASSETS_PATH": {
         "description": "Client app asset path",
         "value": "https://assetpath"

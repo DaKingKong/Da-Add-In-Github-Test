@@ -139,44 +139,12 @@ When start development, it's recommended to use 3rd party's official npm package
 
 Create your app following [this guide](https://developers.ringcentral.com/guide/applications).
 
-## Deploy with Serverless
+## Deploy with Heroku
 
-### 1. Compile JS files
+Use Heroku deploy button on the top to do initial deployment. Then link your repository with Heroku for future deployments using `git push heroku {branch}`.
 
-```
-$ npm run client-build
-```
+More Info:
 
-And get all JS assets file at public folder. Upload all files in public into CDN or static web server.
-
-### 2. Create `serverless-deploy/env.yml` file
-
-```
-$ cp serverless-deploy/env.default.yml serverless-deploy/env.yml
-```
-
-Edit `serverless-deploy/env.yml` to set environment variables.
-We will get `APP_SERVER` after first deploy. So now just keep it blank.
-
-### 3. Create `serverless-deploy/serverless.yml` file
-
-```
-$ cp serverless-deploy/serverless.default.yml serverless-deploy/serverless.yml
-```
-
-Edit `serverless-deploy/env.yml` to update serverless settings.
-The Dynamo `TableName` should be `${DYNAMODB_TABLE_PREFIX}webhooks`. `DYNAMODB_TABLE_PREFIX` is environment variable that we set upper. `ASSETS_PATH` is uri where you host JS files in `Step 1`.
-
-### 4. Deploy
-
-```
-$ npm run serverless-build
-$ npm run serverless-deploy
-```
-
-In first deploy, you will get lambda uri in console output: `https://xxxxxx.execute-api.us-east-1.amazonaws.com/prod`.
-Copy the uri, and update environment variable `APP_SERVER` with it in `serverless-deploy/env.yml` file. Then deploy again:
-
-```
-$ npm run serverless-deploy
-```
+- [Heroku Button](https://devcenter.heroku.com/articles/heroku-button)
+- This template is configured with [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql)
+- Integrate with [Other Heroku Add-on](https://devcenter.heroku.com/categories/add-ons)
